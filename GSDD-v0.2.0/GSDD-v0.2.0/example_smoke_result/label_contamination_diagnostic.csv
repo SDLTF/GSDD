@@ -1,0 +1,4 @@
+observed_label,candidate_count,poisoned_count_diagnostic,poison_fraction_diagnostic
+0,21,6,0.2857142857142857
+1,11,0,0.0
+2,13,0,0.0

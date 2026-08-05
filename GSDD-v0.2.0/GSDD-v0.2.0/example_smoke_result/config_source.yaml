@@ -1,0 +1,56 @@
+experiment:
+  name: gsdd_v02_smoke
+  seed: 1027
+  output_root: results
+  device: auto
+
+dataset:
+  name: synthetic
+  root: data
+  normalize_features: true
+  synthetic_nodes: 180
+  synthetic_features: 32
+  synthetic_classes: 3
+
+attack:
+  enabled: true
+  target_class: 0
+  selection_method: dirty_label
+  poison_count: 6
+  trigger_size: 3
+  trigger_feature_count: 6
+  trigger_feature_value: 1.0
+  stamp_victim_features: true
+  test_victim_count: 30
+
+model:
+  hidden_dim: 48
+  dropout: 0.35
+  supervised_epochs: 60
+  ssl_epochs: 60
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 25
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3, 4, 5]
+  hutchinson_probes: 24
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  degree_bins: 2
+  global_degree_bins: 1
+  minimum_group_size: 6
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.15
+  score_clip: 10.0
+  trim_fraction: 0.25
+  trim_minimum_keep: 5
+  raw_feature_topk: 15
+
+output:
+  save_models: false
+  make_plots: true
+  verbose: true

@@ -1,0 +1,53 @@
+experiment:
+  name: gsdd_v02_cora_clean_label
+  seed: 1027
+  output_root: results
+  device: auto
+
+dataset:
+  name: Cora
+  root: data
+  normalize_features: true
+
+attack:
+  enabled: true
+  target_class: 0
+  selection_method: clean_label
+  poison_count: 4
+  trigger_size: 3
+  trigger_feature_count: 40
+  trigger_feature_value: 1.0
+  stamp_victim_features: true
+  test_victim_count: 100
+
+model:
+  hidden_dim: 128
+  dropout: 0.5
+  supervised_epochs: 300
+  ssl_epochs: 300
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 60
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3, 4, 5]
+  hutchinson_probes: 48
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  degree_bins: 3
+  global_degree_bins: 1
+  minimum_group_size: 8
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.05
+  score_clip: 10.0
+  trim_fraction: 0.20
+  trim_minimum_keep: 6
+  raw_feature_topk: 20
+
+output:
+  save_models: true
+  make_plots: true
+  verbose: true
