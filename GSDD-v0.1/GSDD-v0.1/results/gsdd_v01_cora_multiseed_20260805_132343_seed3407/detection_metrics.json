@@ -1,0 +1,68 @@
+{
+  "structure": {
+    "auroc": 0.5170833333333333,
+    "auprc": 0.17625840464692888,
+    "fpr_at_95_tpr": 0.9333333333333333,
+    "precision_fixed_fraction": 0.19047619047619047,
+    "recall_fixed_fraction": 0.2,
+    "f1_fixed_fraction": 0.1951219512195122,
+    "precision_oracle_k": 0.2,
+    "recall_oracle_k": 0.2,
+    "f1_oracle_k": 0.2
+  },
+  "input_spectrum": {
+    "auroc": 0.30208333333333337,
+    "auprc": 0.10589694910729497,
+    "fpr_at_95_tpr": 0.95,
+    "precision_fixed_fraction": 0.047619047619047616,
+    "recall_fixed_fraction": 0.05,
+    "f1_fixed_fraction": 0.04878048780487805,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  },
+  "model_js": {
+    "auroc": 0.41833333333333333,
+    "auprc": 0.12322327896545315,
+    "fpr_at_95_tpr": 0.925,
+    "precision_fixed_fraction": 0.047619047619047616,
+    "recall_fixed_fraction": 0.05,
+    "f1_fixed_fraction": 0.04878048780487805,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  },
+  "spectral_relation": {
+    "auroc": 0.35916666666666663,
+    "auprc": 0.10929962619464823,
+    "fpr_at_95_tpr": 0.9833333333333333,
+    "precision_fixed_fraction": 0.0,
+    "recall_fixed_fraction": 0.0,
+    "f1_fixed_fraction": 0.0,
+    "precision_oracle_k": 0.0,
+    "recall_oracle_k": 0.0,
+    "f1_oracle_k": 0.0
+  },
+  "transfer": {
+    "auroc": 0.31875,
+    "auprc": 0.11796440797703563,
+    "fpr_at_95_tpr": 0.9416666666666667,
+    "precision_fixed_fraction": 0.047619047619047616,
+    "recall_fixed_fraction": 0.05,
+    "f1_fixed_fraction": 0.04878048780487805,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  },
+  "combined": {
+    "auroc": 0.37083333333333335,
+    "auprc": 0.1329929302459384,
+    "fpr_at_95_tpr": 0.9833333333333333,
+    "precision_fixed_fraction": 0.047619047619047616,
+    "recall_fixed_fraction": 0.05,
+    "f1_fixed_fraction": 0.04878048780487805,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  }
+}

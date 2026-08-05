@@ -1,0 +1,8 @@
+{
+  "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "torch": "2.13.0+cpu",
+  "cuda_available": false,
+  "selected_device": "cpu",
+  "cwd": "D:\\Code\\GSDD\\GSDD-v0.1\\GSDD-v0.1"
+}

@@ -1,0 +1,68 @@
+{
+  "structure": {
+    "auroc": 0.5245833333333333,
+    "auprc": 0.14774052178032981,
+    "fpr_at_95_tpr": 0.8166666666666667,
+    "precision_fixed_fraction": 0.09523809523809523,
+    "recall_fixed_fraction": 0.1,
+    "f1_fixed_fraction": 0.0975609756097561,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  },
+  "input_spectrum": {
+    "auroc": 0.16541666666666666,
+    "auprc": 0.08730612471159499,
+    "fpr_at_95_tpr": 0.9833333333333333,
+    "precision_fixed_fraction": 0.0,
+    "recall_fixed_fraction": 0.0,
+    "f1_fixed_fraction": 0.0,
+    "precision_oracle_k": 0.0,
+    "recall_oracle_k": 0.0,
+    "f1_oracle_k": 0.0
+  },
+  "model_js": {
+    "auroc": 0.3079166666666666,
+    "auprc": 0.10334790188825291,
+    "fpr_at_95_tpr": 0.975,
+    "precision_fixed_fraction": 0.047619047619047616,
+    "recall_fixed_fraction": 0.05,
+    "f1_fixed_fraction": 0.04878048780487805,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  },
+  "spectral_relation": {
+    "auroc": 0.3466666666666666,
+    "auprc": 0.11358720969444763,
+    "fpr_at_95_tpr": 0.9333333333333333,
+    "precision_fixed_fraction": 0.047619047619047616,
+    "recall_fixed_fraction": 0.05,
+    "f1_fixed_fraction": 0.04878048780487805,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  },
+  "transfer": {
+    "auroc": 0.1475,
+    "auprc": 0.08612601855789302,
+    "fpr_at_95_tpr": 0.9916666666666667,
+    "precision_fixed_fraction": 0.0,
+    "recall_fixed_fraction": 0.0,
+    "f1_fixed_fraction": 0.0,
+    "precision_oracle_k": 0.0,
+    "recall_oracle_k": 0.0,
+    "f1_oracle_k": 0.0
+  },
+  "combined": {
+    "auroc": 0.2845833333333333,
+    "auprc": 0.10193179944545633,
+    "fpr_at_95_tpr": 0.9833333333333333,
+    "precision_fixed_fraction": 0.047619047619047616,
+    "recall_fixed_fraction": 0.05,
+    "f1_fixed_fraction": 0.04878048780487805,
+    "precision_oracle_k": 0.05,
+    "recall_oracle_k": 0.05,
+    "f1_oracle_k": 0.05
+  }
+}

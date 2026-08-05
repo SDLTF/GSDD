@@ -1,0 +1,11 @@
+GSDD-v0.1.1 Windows PowerShell patch
+
+1. Close any running GSDD experiment.
+2. Copy the contents of this patch directory into the existing GSDD-v0.1 project root.
+3. Allow Windows to overwrite matching files.
+4. Run:
+
+   powershell.exe -ExecutionPolicy Bypass -File .\scripts\run_smoke.ps1
+
+The patch updates all PowerShell launchers and gsdd\graph_ops.py.
+Existing configs, downloaded data, and results are not removed.

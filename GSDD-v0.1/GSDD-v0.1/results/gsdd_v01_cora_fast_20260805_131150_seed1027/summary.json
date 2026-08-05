@@ -1,0 +1,6 @@
+{
+  "status": "running",
+  "dataset": "Cora",
+  "seed": 1027,
+  "device": "cpu"
+}

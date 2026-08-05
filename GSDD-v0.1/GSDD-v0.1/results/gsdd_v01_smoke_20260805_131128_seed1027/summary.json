@@ -1,0 +1,6 @@
+{
+  "status": "running",
+  "dataset": "synthetic",
+  "seed": 1027,
+  "device": "cpu"
+}
