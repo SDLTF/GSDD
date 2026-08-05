@@ -1,0 +1,8 @@
+{
+  "python": "3.13.5 (main, May  5 2026, 21:05:52) [GCC 14.2.0]",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "torch": "2.10.0+cpu",
+  "cuda_available": false,
+  "selected_device": "cpu",
+  "cwd": "/mnt/data/GSDD-v0.3.0"
+}
