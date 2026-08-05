@@ -1,0 +1,77 @@
+experiment:
+  name: gsdd_v051_smoke_repro
+  seed: 1027
+  output_root: results
+  device: cpu
+
+dataset:
+  name: synthetic
+  root: data
+  normalize_features: true
+  synthetic_nodes: 90
+  synthetic_features: 20
+  synthetic_classes: 3
+
+attack:
+  enabled: true
+  target_class: 0
+  selection_method: dirty_label
+  ablation_mode: full
+  poison_count: 3
+  trigger_size: 2
+  trigger_feature_count: 8
+  trigger_feature_value: 1.0
+  stamp_victim_features: true
+  test_victim_count: 20
+
+model:
+  hidden_dim: 24
+  dropout: 0.3
+  supervised_epochs: 20
+  ssl_epochs: 20
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 8
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3]
+  hutchinson_probes: 8
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  degree_bins: 2
+  minimum_group_size: 4
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.10
+  score_clip: 10.0
+  global_degree_bins: 1
+  trim_fraction: 0.25
+  trim_minimum_keep: 4
+  raw_feature_topk: 10
+
+paired:
+  training_seed_offset: 10000
+  repeat_full_control: false
+  permutation_repeats: 100
+
+reproducibility:
+  enabled: true
+  deterministic_algorithms: true
+  warn_only: false
+  allow_tf32: false
+  matmul_precision: highest
+  cublas_workspace_config: ":4096:8"
+  replicas: 2
+  operational_topk_fraction: 0.10
+  spearman_min: 0.95
+  pearson_min: 0.95
+  topk_overlap_min: 0.80
+  auroc_delta_max: 0.02
+  auprc_delta_max: 0.05
+
+output:
+  save_models: true
+  make_plots: false
+  verbose: true

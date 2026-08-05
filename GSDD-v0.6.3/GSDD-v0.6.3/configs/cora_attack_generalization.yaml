@@ -1,0 +1,84 @@
+experiment:
+  name: gsdd_v06_cora_attack_generalization
+  seed: 1027
+  output_root: results
+  device: cuda
+
+dataset:
+  name: Cora
+  root: data
+  normalize_features: true
+
+attack:
+  enabled: true
+  family: fixed_rare_clique
+  target_class: 0
+  selection_method: dirty_label
+  ablation_mode: full
+  poison_count: 4
+  trigger_size: 3
+  trigger_feature_count: 40
+  trigger_feature_value: 1.0
+  stamp_victim_features: true
+  test_victim_count: 100
+
+  surrogate_hidden_dim: 64
+  surrogate_epochs: 180
+  surrogate_patience: 40
+  generator_hidden_dim: 128
+  generator_epochs: 220
+  generator_learning_rate: 0.01
+  generator_patience: 50
+  generator_topk_features: 32
+  generator_prototype_count: 20
+  homophily_weight: 0.30
+  distribution_weight: 1.00
+  sparsity_weight: 0.01
+  topology_density_weight: 0.04
+  victim_stamp_strength: 0.15
+
+model:
+  hidden_dim: 128
+  dropout: 0.5
+  supervised_epochs: 300
+  ssl_epochs: 0
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 60
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3, 4, 5]
+  hutchinson_probes: 0
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  degree_bins: 3
+  global_degree_bins: 1
+  minimum_group_size: 8
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.05
+  score_clip: 10.0
+  trim_fraction: 0.20
+  trim_minimum_keep: 6
+  raw_feature_topk: 30
+
+paired:
+  training_seed_offset: 10000
+  repeat_full_control: false
+  permutation_repeats: 5000
+
+reproducibility:
+  enabled: true
+  deterministic_algorithms: true
+  warn_only: true
+  allow_tf32: false
+  matmul_precision: highest
+  cublas_workspace_config: ":4096:8"
+  replicas: 1
+
+output:
+  save_models: false
+  make_plots: true
+  verbose: true

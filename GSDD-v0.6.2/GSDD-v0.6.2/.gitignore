@@ -1,0 +1,84 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python caches and tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+# Packaging/build outputs
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Local datasets and generated experiment outputs
+data/*
+!data/.gitkeep
+results/*
+!results/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+runs/
+logs/
+wandb/
+tensorboard/
+
+# Model checkpoints and large generated arrays
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.pkl
+*.pickle
+*.joblib
+*.npy
+*.npz
+
+# Logs, temporary files, and result archives
+*.log
+*.tmp
+*.temp
+*.bak
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+~$*
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Optional local overrides
+configs/local*.yaml
+configs/local*.yml

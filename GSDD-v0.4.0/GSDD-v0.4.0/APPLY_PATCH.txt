@@ -1,0 +1,14 @@
+GSDD-v0.4.1 aggregate hotfix
+================================
+
+1. Copy aggregate_causal_ablation.py to the project root and overwrite the old file.
+2. Copy scripts/rerun_causal_ablation_aggregate.ps1 into the project's scripts folder.
+3. From the project root, run:
+
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\rerun_causal_ablation_aggregate.ps1
+
+The 12 model runs do not need to be repeated. The script reads existing complete
+result directories, keeps the latest run for each seed/mode pair, regenerates the
+aggregate CSV/Markdown files, and creates:
+
+artifacts\gsdd_v04_causal_ablation_aggregate.zip

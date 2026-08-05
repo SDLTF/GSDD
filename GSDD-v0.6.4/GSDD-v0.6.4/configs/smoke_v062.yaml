@@ -1,0 +1,100 @@
+experiment:
+  name: gsdd_v062_smoke
+  seed: 1027
+  output_root: results
+  device: cuda
+
+dataset:
+  name: synthetic
+  root: data
+  normalize_features: true
+  synthetic_nodes: 120
+  synthetic_features: 24
+  synthetic_classes: 3
+
+attack:
+  enabled: true
+  family: ugba_style_binding_aware
+  target_class: 0
+  selection_method: dirty_label
+  ablation_mode: full
+  poison_count: 3
+  trigger_size: 3
+  trigger_feature_count: 8
+  trigger_feature_value: 1.0
+  stamp_victim_features: true
+  test_victim_count: 20
+  surrogate_hidden_dim: 32
+  surrogate_epochs: 35
+  surrogate_patience: 12
+  generator_hidden_dim: 48
+  generator_epochs: 20
+  generator_learning_rate: 0.02
+  generator_patience: 8
+  generator_topk_features: 8
+  generator_prototype_count: 8
+  homophily_weight: 0.20
+  distribution_weight: 0.50
+  sparsity_weight: 0.005
+  topology_density_weight: 0.03
+  victim_stamp_strength: 0.0
+  generator_outer_rounds: 1
+  generator_calibration_count: 12
+  poison_target_weight: 1.0
+  binding_gap_weight: 3.0
+  binding_margin: 0.5
+  clean_preserve_weight: 3.0
+  clean_evasion_weight: 6.0
+  clean_preserve_margin: 0.25
+  adaptive_raw_blend: 0.75
+  distribution_raw_blend: 0.30
+  distribution_target_prototype_fraction: 0.35
+  validity_full_asr_min: 0.70
+  validity_control_asr_max: 0.20
+  validity_binding_gap_min: 0.40
+
+model:
+  hidden_dim: 48
+  dropout: 0.2
+  supervised_epochs: 70
+  ssl_epochs: 0
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 20
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3]
+  hutchinson_probes: 0
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  degree_bins: 2
+  global_degree_bins: 1
+  minimum_group_size: 5
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.10
+  score_clip: 10.0
+  trim_fraction: 0.20
+  trim_minimum_keep: 4
+  raw_feature_topk: 15
+
+paired:
+  training_seed_offset: 10000
+  repeat_full_control: false
+  permutation_repeats: 200
+
+reproducibility:
+  enabled: true
+  deterministic_algorithms: true
+  warn_only: true
+  allow_tf32: false
+  matmul_precision: highest
+  cublas_workspace_config: ":4096:8"
+  replicas: 1
+
+output:
+  save_models: false
+  make_plots: false
+  verbose: true
