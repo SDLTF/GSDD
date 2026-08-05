@@ -1,0 +1,79 @@
+experiment:
+  name: gsdd_v051_cora_repro
+  seed: 1027
+  output_root: results
+  device: cuda
+
+dataset:
+  name: Cora
+  root: data
+  normalize_features: true
+  synthetic_nodes: 240
+  synthetic_features: 48
+  synthetic_classes: 3
+
+attack:
+  enabled: true
+  target_class: 0
+  selection_method: dirty_label
+  ablation_mode: full
+  poison_count: 4
+  trigger_size: 3
+  trigger_feature_count: 40
+  trigger_feature_value: 1.0
+  stamp_victim_features: true
+  test_victim_count: 100
+
+model:
+  hidden_dim: 128
+  dropout: 0.5
+  supervised_epochs: 300
+  ssl_epochs: 300
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 60
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3, 4, 5]
+  hutchinson_probes: 48
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  degree_bins: 3
+  minimum_group_size: 8
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.10
+  score_clip: 10.0
+  global_degree_bins: 1
+  trim_fraction: 0.25
+  trim_minimum_keep: 6
+  raw_feature_topk: 20
+
+paired:
+  training_seed_offset: 10000
+  repeat_full_control: false
+  permutation_repeats: 2000
+
+reproducibility:
+  enabled: true
+  deterministic_algorithms: true
+  # Warning mode records unsupported deterministic CUDA sparse operations
+  # while allowing the two-run empirical stability audit to finish.
+  warn_only: true
+  allow_tf32: false
+  matmul_precision: highest
+  cublas_workspace_config: ":4096:8"
+  replicas: 2
+  operational_topk_fraction: 0.05
+  spearman_min: 0.95
+  pearson_min: 0.95
+  topk_overlap_min: 0.80
+  auroc_delta_max: 0.02
+  auprc_delta_max: 0.05
+
+output:
+  save_models: true
+  make_plots: true
+  verbose: true

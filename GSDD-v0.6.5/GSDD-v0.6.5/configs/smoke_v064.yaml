@@ -1,0 +1,109 @@
+experiment:
+  name: gsdd_v064_smoke
+  seed: 1027
+  output_root: results
+  device: cpu
+
+dataset:
+  name: synthetic
+  root: data
+  normalize_features: true
+  synthetic_nodes: 120
+  synthetic_features: 24
+  synthetic_classes: 3
+
+attack:
+  enabled: true
+  family: dpgba_style_binding_aware
+  target_class: 1
+  selection_method: clean_label
+  poison_count: 5
+  trigger_size: 3
+  test_victim_count: 24
+  stamp_victim_features: false
+  surrogate_hidden_dim: 32
+  surrogate_epochs: 24
+  surrogate_patience: 8
+  generator_hidden_dim: 48
+  generator_epochs: 12
+  generator_learning_rate: 0.01
+  generator_patience: 6
+  generator_prototype_count: 12
+  homophily_weight: 0.2
+  distribution_weight: 0.2
+  sparsity_weight: 0.005
+  topology_density_weight: 0.03
+  victim_stamp_strength: 0.0
+  generator_outer_rounds: 1
+  generator_calibration_count: 12
+  poison_target_weight: 2.0
+  binding_gap_weight: 4.0
+  binding_margin: 0.5
+  clean_preserve_weight: 2.0
+  clean_evasion_weight: 3.0
+  clean_preserve_margin: 0.25
+  distribution_raw_blend: 0.6
+  distribution_target_prototype_fraction: 0.4
+  clean_label_baseline_asr_max: 1.0
+  clean_label_clean_trigger_asr_max: 1.0
+  clean_label_poison_no_trigger_asr_max: 1.0
+  clean_label_shuffled_asr_max: 1.0
+  clean_label_full_asr_min: 0.0
+  clean_label_binding_gap_min: -1.0
+  clean_label_target_scan_max: 1.0
+  clean_label_max_targets: 1
+  clean_label_shuffle_shift: 1
+  clean_label_attack_mode: contextual
+  generic_clean_trigger_asr_max: 1.0
+  generic_poison_no_trigger_asr_max: 1.0
+  generic_full_asr_min: 0.0
+  generic_did_min: -1.0
+  generic_shuffled_target_weight: 1.0
+  generic_consistency_weight: 0.1
+  contextual_pair_weight: 2.0
+  contextual_pair_margin: 0.05
+  contextual_relation_weight: 0.1
+  contextual_diversity_weight: 0.1
+  contextual_min_feature_std: 0.0
+
+model:
+  hidden_dim: 32
+  dropout: 0.2
+  supervised_epochs: 28
+  ssl_epochs: 0
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 10
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3]
+  hutchinson_probes: 0
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  global_degree_bins: 1
+  minimum_group_size: 3
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.1
+  score_clip: 10.0
+
+paired:
+  training_seed_offset: 10000
+  repeat_full_control: false
+  permutation_repeats: 30
+
+reproducibility:
+  enabled: true
+  deterministic_algorithms: true
+  warn_only: true
+  allow_tf32: false
+  matmul_precision: highest
+  cublas_workspace_config: ":4096:8"
+  replicas: 1
+
+output:
+  save_models: false
+  make_plots: false
+  verbose: true

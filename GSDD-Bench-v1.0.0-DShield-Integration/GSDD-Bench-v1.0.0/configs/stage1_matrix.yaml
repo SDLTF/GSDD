@@ -1,0 +1,32 @@
+version: 1
+python: "3.13"
+cuda_required: true
+datasets:
+  smoke: Cora
+  formal:
+    - Pubmed
+attacks:
+  - SBA
+  - UGBA
+  - GCBA
+seeds:
+  pilot: [1027]
+  formal: [1027, 2026, 3407]
+victim_model: GCN
+artifact_policy: generate_once_reuse_for_all_defenses
+defenses:
+  - none
+  - DShield
+  - GSDD
+selection:
+  GSDD:
+    filter_fraction: 0.01
+    minimum_filter_count: 1
+spectral:
+  hidden_dim: 32
+  num_bands: 5
+  supervised_epochs: 200
+  ssl_epochs: 200
+  patience: 40
+  learning_rate: 0.01
+  weight_decay: 0.0005

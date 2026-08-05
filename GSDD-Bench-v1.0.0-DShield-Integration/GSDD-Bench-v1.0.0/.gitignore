@@ -1,0 +1,10 @@
+.venv/
+external/DShield-Official/
+artifacts/**
+!artifacts/.gitkeep
+results/**
+!results/.gitkeep
+provenance/*.lock.txt
+provenance/*.json
+__pycache__/
+*.pyc

@@ -1,0 +1,101 @@
+experiment:
+  name: gsdd_v065_smoke
+  seed: 1027
+  output_root: results
+  device: cpu
+
+dataset:
+  name: synthetic
+  root: data
+  normalize_features: true
+  synthetic_nodes: 90
+  synthetic_features: 20
+  synthetic_classes: 3
+
+attack:
+  enabled: true
+  family: dpgba_style_binding_aware
+  target_class: 1
+  selection_method: clean_label
+  poison_count: 5
+  trigger_size: 3
+  test_victim_count: 20
+  surrogate_hidden_dim: 24
+  surrogate_epochs: 12
+  surrogate_patience: 5
+  generator_hidden_dim: 32
+  generator_epochs: 8
+  generator_learning_rate: 0.01
+  generator_patience: 5
+  generator_topk_features: 8
+  generator_prototype_count: 12
+  homophily_weight: 0.20
+  distribution_weight: 0.20
+  sparsity_weight: 0.003
+  topology_density_weight: 0.02
+  generator_outer_rounds: 1
+  generator_calibration_count: 10
+  poison_target_weight: 4.0
+  binding_gap_weight: 4.0
+  binding_margin: 0.5
+  clean_preserve_weight: 2.0
+  clean_evasion_weight: 4.0
+  clean_preserve_margin: 0.3
+  distribution_raw_blend: 0.55
+  distribution_target_prototype_fraction: 0.25
+  clean_label_shuffle_shift: 1
+  clean_label_attack_mode: generic
+  generic_shuffled_target_weight: 2.0
+  generic_consistency_weight: 0.2
+  generic_clean_cap_weight: 8.0
+  generic_clean_probability_cap: 0.20
+  generic_selectivity_weight: 5.0
+  generic_selectivity_margin: 0.20
+  generic_target_similarity_weight: 1.0
+  generic_target_similarity_allowance: 0.10
+
+model:
+  hidden_dim: 24
+  dropout: 0.2
+  supervised_epochs: 15
+  ssl_epochs: 0
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  patience: 6
+
+spectral:
+  num_bands: 4
+  moment_orders: [2, 3]
+  hutchinson_probes: 0
+  epsilon: 1.0e-8
+  layers: [1, 2]
+
+detection:
+  degree_bins: 2
+  global_degree_bins: 1
+  minimum_group_size: 3
+  mad_epsilon: 1.0e-6
+  topk_fraction: 0.10
+  score_clip: 10.0
+  trim_fraction: 0.20
+  trim_minimum_keep: 3
+  raw_feature_topk: 10
+
+paired:
+  training_seed_offset: 1000
+  repeat_full_control: false
+  permutation_repeats: 20
+
+reproducibility:
+  enabled: true
+  deterministic_algorithms: true
+  warn_only: true
+  allow_tf32: false
+  matmul_precision: highest
+  cublas_workspace_config: ":4096:8"
+  replicas: 1
+
+output:
+  save_models: false
+  make_plots: false
+  verbose: true
