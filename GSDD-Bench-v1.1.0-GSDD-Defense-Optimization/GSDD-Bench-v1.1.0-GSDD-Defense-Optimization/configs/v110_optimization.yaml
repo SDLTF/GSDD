@@ -1,0 +1,47 @@
+version: "1.1.0"
+stage: gsdd-defense-optimization
+dataset: Pubmed
+attacks:
+  - SBA
+  - UGBA
+  - GCBA
+seeds:
+  pilot: 1027
+victim_model: GCN
+reuse_official_artifacts: true
+cuda_required: true
+detection:
+  supervised_epochs: 200
+  ssl_epochs: 200
+  hidden_dim: 32
+  spectral_bands: 5
+  robust_calibration:
+    two_sided: true
+    conditions:
+      - observed_label
+      - degree_quantile
+    degree_bins: 4
+    minimum_group_size: 20
+    fallback:
+      - observed_label
+      - global
+  fusion:
+    - robust_max
+    - fisher
+    - cauchy
+optimization:
+  budgets:
+    - 0.005
+    - 0.01
+    - 0.02
+    - 0.05
+  modes:
+    hard_filter:
+      enabled: true
+    soft_weight:
+      enabled: true
+      strength: 6.0
+selection:
+  pilot_only: true
+  clean_accuracy_delta_floor: -0.02
+  objective: minimize_mean_asr_then_worst_asr
